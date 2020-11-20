@@ -97,5 +97,5 @@
     <string name="pref_toast_invalid_min_face_size">Minimum face size must be a float value and in the range [0.0, 1.0]</string>
     <string name="calibration">Start Calib</string>
     <string name="calibration_end">Stop Calib</string>
-    <string name="instruction">Please look at Red Circles on 4 Corners and Center</string>
+    <string name="instruction">Please look at Red Circle</string>
 </resources>

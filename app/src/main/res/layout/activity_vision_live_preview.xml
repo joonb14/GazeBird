@@ -71,10 +71,6 @@
       android:background="@drawable/style_circular_button"
       android:layout_centerHorizontal="true"
       android:layout_centerVertical="true"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentBottom="false"
-      android:layout_alignParentLeft="true"
-      android:layout_alignParentRight="false"
       android:visibility="invisible">
   </Button>
   <Button
