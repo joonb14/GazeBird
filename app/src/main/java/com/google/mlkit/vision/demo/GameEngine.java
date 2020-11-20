@@ -109,14 +109,28 @@ public class GameEngine {
 
     public void updateAndDrawBird(Canvas canvas) {
         if (gameState == 1) {
-            if (bird.getY() < (AppConstants.SCREEN_HEIGHT - AppConstants.getBitmapBank().getBirdHeight()) || bird.getVelocity() < 0) {
-                bird.setVelocity(bird.getVelocity() + AppConstants.gravity);
+//            if (bird.getY() < (AppConstants.SCREEN_HEIGHT - AppConstants.getBitmapBank().getBirdHeight()) || bird.getVelocity() < 0) {
+//                bird.setVelocity(bird.getVelocity() + AppConstants.gravity);
                 //bird.setY(bird.getY() + bird.getVelocity());
+                int curY = (int)FaceDetectorProcessor.getMovingAverageX();
                 bird.setY((int)FaceDetectorProcessor.getMovingAverageY());
-                bird.setX((int)FaceDetectorProcessor.getMovingAverageX());
-                Log.d("MOBED","bird Y: "+bird.getY());
+//                if(Math.abs(bird.getY()-curY)<10) {
+//                    bird.setY((int)FaceDetectorProcessor.getMovingAverageY());
+//                    Log.d("MOBED","bird Y: "+bird.getY());
+//                }
+//                else if (bird.getY()>=curY){
+//                    bird.setY(bird.getY()-10);
+//                    Log.d("MOBED","bird Y: "+bird.getY());
+//                }
+//                else if (bird.getY()<curY){
+//                    bird.setY(bird.getY()+10);
+//                    Log.d("MOBED","bird Y: "+bird.getY());
+//                }
+//                else {
+//                    Log.d("MOBED","gazepoint not used");
+//                }
                 //Log.d("MOBED","bird Velocity: "+bird.getVelocity());
-            }
+//            }
         }
         int currentFrame = bird.getCurrentFrame();
         canvas.drawBitmap(AppConstants.getBitmapBank().getBird(currentFrame), bird.getX(), bird.getY(), null);

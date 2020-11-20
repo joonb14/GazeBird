@@ -80,6 +80,7 @@ public class FaceDetectorProcessor extends VisionProcessorBase<List<Face>> {
      * tested with Galaxy S9+
      * */
     private final boolean isCustomDevice = true;
+    private final boolean isillumfacepos = true;
     //custom device
     private final float customDeviceWidthPixel = 1440.0f;
     private final float customDeviceWidthCm = 7.0f;
@@ -505,17 +506,28 @@ public class FaceDetectorProcessor extends VisionProcessorBase<List<Face>> {
                     //gazel_shared_ver9
                     //inputs = new float[][][][][]{facepos, right_4d, left_eye_right_top, euler, right_eye_right_top, left_4d};
                     //illum_mysage
-                    inputs = new float[][][][][]{left_4d, right_4d, euler, facepos};
+                    //inputs = new float[][][][][]{left_4d, right_4d, euler, facepos};
                     //illum_facepos
-                    //inputs = new float[][][][][]{left_4d, euler, facepos, face_grid, right_4d};
+                    if(isillumfacepos) {
+                        facepos = new float[1][1][1][1];
+                        facepos[0][0][0][0] = face_Y;
+                        inputs = new float[][][][][]{right_4d, left_4d, euler, facepos};
+                    }
                 }
                 else {
                     inputs = new float[][][][][]{left_4d, right_4d};
                 }
 
                 // To use multiple input and multiple output you must use the Interpreter.runForMultipleInputsOutputs()
-                float[][] output = new float[1][2];
+                float[][] output = new float[1][1];
                 Map<Integer, Object> outputs = new HashMap<>();
+                if(!isillumfacepos) {
+                    output = new float[1][2];
+                }
+                else {
+                    output = new float[1][1];
+                }
+                outputs = new HashMap<>();
                 outputs.put(0, output);
                 Log.d("LATENCY","Input Wrapped");
                 try {
@@ -537,7 +549,8 @@ public class FaceDetectorProcessor extends VisionProcessorBase<List<Face>> {
                     //tflite.run(face_input, output);
                     //The output x,y will be stored to below variables
                     yhatX = output[0][0];
-                    yhatY = output[0][1];
+                    if(!isillumfacepos) yhatY = output[0][1];
+                    else yhatY = output[0][0];
                     Log.d("LATENCY","Gaze Predicted");
                     if(isCustomDevice) {
                         //TODO

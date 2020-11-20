@@ -226,8 +226,8 @@ public final class LivePreviewActivity extends AppCompatActivity
                                              * TabS6
                                              * */
                                             //InputStream inputStream = getAssets().open("custom_models/eval/gazel_shared_ver9.tflite");
-                                            InputStream inputStream = getAssets().open("custom_models/eval/illum_mysage.tflite");
-                                            //InputStream inputStream = getAssets().open("custom_models/eval/illum_facepos.tflite");
+                                            //InputStream inputStream = getAssets().open("custom_models/eval/illum_mysage.tflite");
+                                            InputStream inputStream = getAssets().open("custom_models/eval/illum_facepos.tflite");
 
                                             byte[] model = new byte[inputStream.available()];
                                             inputStream.read(model);
