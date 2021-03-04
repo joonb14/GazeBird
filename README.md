@@ -1,4 +1,11 @@
 # GazeBird
+
+you must replace the model file in<br>
+```GazeBird/app/src/main/assets/custom_models/eval/[your model].tflite```
+with your model!<br>
+
+To create model take a look at <a href="https://github.com/joonb14/GAZEL.git"><b>GAZEL</b></a> and <a href="https://github.com/joonb14/MLKitGazeDataCollectingButton"><b>MLKitGazeDataCollectingButton</b></a><br>
+
 ### Sample Video
 [![S9+](https://img.youtube.com/vi/SzDCBVbjowA/0.jpg)](https://www.youtube.com/watch?v=SzDCBVbjowA)<br>
 
